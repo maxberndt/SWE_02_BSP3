@@ -46,26 +46,26 @@ void print(List* list){
 }
 
 
-//LIFO Funktionen
+//FIFO Funktionen
 
 //Push existiert schon
 
 //Pop gibt den obersten Wert aus und entfernt ihn
-int pop(){
-    List *head = head;
-    List *current = head;
-    current = head -> right;
+int pop(List* list){
+    List *head = list;
+    List *current = list;
+    current = head -> left;
     printf("Pop: %d \n", current->data); //Ausgabe ausserhalb der Funktion gab leider Probleme
     delete(current);
     return current->data;
 }
 
 //Top gibt den obersten Wert aus, entfernt ihn jedoch nicht
-int top(){
-    List *head = head;
-    List *current = head;
-    current = head -> right;
-    printf("Top: %d \n", current->data);
+int top(List* list){
+    List *head = list;
+    List *current = list;
+    current = head -> left;
+    printf("Pop: %d \n", current->data); //Ausgabe ausserhalb der Funktion gab leider Probleme
     return current->data;
 }
 
@@ -95,7 +95,7 @@ int empty(){
         printf("Liste ist leer!\n");
         return 0;
     }else {
-        printf("Liste ist nicht leer!\n");
+        printf("LIFO ist nicht leer!\n");
         return 1;
     };
 }
@@ -125,12 +125,11 @@ int main(){
     }
 
 
-
     //Test FIFO Funktionen
     push(head,5);
-    pop();
+    pop(head);
     print(head);
-    top();
+    top(head);
 
     length(head);
     empty();
