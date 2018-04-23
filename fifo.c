@@ -65,7 +65,7 @@ int top(List* list){
     List *head = list;
     List *current = list;
     current = head -> left;
-    printf("Pop: %d \n", current->data); //Ausgabe ausserhalb der Funktion gab leider Probleme
+    printf("Top: %d \n", current->data); //Ausgabe ausserhalb der Funktion gab leider Probleme
     return current->data;
 }
 
@@ -128,6 +128,7 @@ int main(){
     //Test FIFO Funktionen
     push(head,5);
     pop(head);
+    top(head);
     print(head);
     top(head);
 
