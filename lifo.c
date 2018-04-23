@@ -46,7 +46,7 @@ void print(List* list){
 }
 
 
-//FIFO Funktionen
+//LIFO Funktionen
 
 //Push existiert schon
 
@@ -125,7 +125,7 @@ int main(){
     }
 
 
-    //Test FIFO Funktionen
+    //Test LIFO Funktionen
     push(head,5);
     pop(head);
     top(head);
