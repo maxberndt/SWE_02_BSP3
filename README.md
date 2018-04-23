@@ -3,4 +3,5 @@ Beispiel 3 / Listen
 
 # Dateien:
 * header.h - Immer der gleiche Header
-* lifo.c - Lifo Funktionen
+* lifo.c - LIFO Funktionen
+* fifo.c - FIFO Funktionen
