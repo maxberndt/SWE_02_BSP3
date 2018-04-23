@@ -1,0 +1,86 @@
+//
+// Created by Max Berndt on 20.04.2018.
+//
+
+#include "header.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+//Listenfunktionen
+//Neue Liste anlegen
+List * new_list(){
+    List *new = (List*) malloc(sizeof(List));
+    new->data  = -1; //Head hat Wert -1
+    new->right = new;
+    new->left  = new;
+    return new; //Gib Pointer auf Liste zurueck
+}
+
+//Neuen Wert eintragen
+List * push(List *list, int data){
+    List *new = (List *) malloc(sizeof(List));
+    new->data        = data;
+    new->left        = list;
+    new->right       = list->right;
+    list->right      = new;
+    new->right->left = new;
+    return new;
+}
+
+//Listenelement loeschen
+List * delete(List *list){
+    list->right->left = list->left;
+    list->left->right = list->right;
+    return list->left;
+}
+
+
+void print(List* list){
+    List *head = list;
+    List *current = list;
+    printf("%d ", head->data);
+    while (head != (current = current->right)){
+        printf("%d ", current->data);
+    }
+    printf("\n");
+}
+
+//Testprogramm
+int main(){
+
+    //Erstellen einer neuen Liste
+    struct node *head    = new_list();
+    struct node *current = head;
+    int i;
+
+    //Befüllen mit 10 Zahlen
+    for(i = 1; i <= 10; i++) {
+        current = push(current, i);
+    }
+
+    printf("Ausgabe Werte ab Anfang\n");
+    print(head);
+
+    printf("Ausgabe Werte ab aktuellen Wert\n");
+    print(current);
+
+    printf("Wert 20 noch hinzufuegen und ausgeben\n");
+    current = push(current, 20);
+    print(current);
+
+    printf("Loeschen des vorletzten Elements\n");
+    current = current->left;
+    current = delete(current);
+    printf("Liste nach loeschen:\n");
+    print(head);
+
+
+    printf("Loeschen des 2. Elements\n");
+    current = head->right->right;
+    current = delete(current);
+    printf("Liste nach loeschen:\n");
+    print(head);
+
+
+    return 0;
+}
